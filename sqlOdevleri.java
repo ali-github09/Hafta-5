@@ -28,5 +28,17 @@ public class sqlOdevleri {
         String odev3_3 = "SELECT title FROM film WHERE title ILIKE '%T%T%T%T%';";
 
         String odev3_4 = "SELECT title,length,rental_rate FROM film WHERE title LIKE 'C%' and length > 90 and rental_rate = 2.99;";
+
+        String ara2 = "--------------------------------------------------------------------------------------------------------";
+
+        String odev4_1 = "SELECT DISTINCT replacement_cost FROM film;";
+
+        String odev4_2 = "SELECT COUNT(DISTINCT replacement_cost) FROM film;";
+
+        String odev4_3 = "SELECT COUNT(*) AS film_sayisi FROM film WHERE title LIKE 'T%' AND rating = 'G';";
+
+        String odev4_4 = "SELECT COUNT(*) AS film_sayisi FROM country WHERE country LIKE '_____';";
+
+        String odev4_5 = "SELECT COUNT(*) AS film_sayisi FROM city WHERE city ILIKE '%r';";
     }
 }
