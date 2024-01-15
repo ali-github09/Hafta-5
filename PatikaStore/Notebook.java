@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Notebook extends Product implements Operations{
+
     Scanner input = new Scanner(System.in);
     private static ArrayList<Notebook> notebookList = new ArrayList<>();
 
@@ -21,7 +22,7 @@ public class Notebook extends Product implements Operations{
     }
 
     static {
-        notebookList.add(new Notebook(1,7000,0,"Matebook 14","Huawei",16,256,15,"GB",25));
+        notebookList.add(new Notebook(1,7000,0,"Matebook 14","HUAWEI",16,256,15,"GB",25));
         notebookList.add(new Notebook(2,3699,0,"V14 IGL", "LENOVO",8,1024,15.6,"GB",20));
         notebookList.add(new Notebook(3,8199,0,"Tuf Gaming","ASUS",32,2048,15.6,"GB",15));
     }
@@ -38,7 +39,7 @@ public class Notebook extends Product implements Operations{
 
     @Override
     public void runMenu() {
-        Notebook nootebook = new Notebook();
+       Notebook notebook = new Notebook();
         boolean isRunning = true;
 
         while(isRunning) {
@@ -55,19 +56,19 @@ public class Notebook extends Product implements Operations{
                     isRunning = false;
                     break;
                 case 1:
-                nootebook.addProduct();
+                notebook.addProduct();
                     break;
                 case 2:
-                nootebook.deleteProduct();
+                notebook.deleteProduct();
                     break;
                 case 3:
-                nootebook.showProductList();
+                notebook.showProductList();
                     break;
                 case 4:
-                nootebook.filterbyBrand();
+                notebook.filterbyBrand();
                     break;
                 case 5:
-                nootebook.filterbyId();
+                notebook.filterbyId();
                     break;
                 default:
             }
@@ -91,7 +92,6 @@ public class Notebook extends Product implements Operations{
 
     @Override
     public void addProduct() {
-
         Notebook notebook = new Notebook();
         System.out.println("Lütfen eklemez istediğiniz Notebook'a ait özellikleri giriniz");
 
@@ -148,18 +148,35 @@ public class Notebook extends Product implements Operations{
     public void filterbyId() {
         System.out.println("Lütfen filtrelemek istediğiniz ID numarasını giriniz : ");
         int selectedID = input.nextInt();
-        ArrayList<Notebook> filteredList = new ArrayList<>();
-                notebookList.stream()
-                .filter(notebook -> notebook.id == selectedID)
-                .collect(Collectors.toList());
-        for (Notebook item : filteredList) {
-            System.out.println(item);
+
+        ArrayList<Notebook> filteredList1 = new ArrayList<>();
+
+        for (Notebook notebook : notebookList) {
+            if (notebook.getId() == selectedID) {
+                filteredList1.add(notebook);
+            }
+        }
+
+        for (Notebook notebook : filteredList1) {
+            System.out.println(notebook);
         }
     }
 
     @Override
     public void filterbyBrand() {
+        System.out.println("Lütfen filtrelemek istediğiniz markayı  giriniz : ");
+        String selectedBrand = input.nextLine();
+        ArrayList<Notebook> filteredList2 = new ArrayList<>();
 
+        for (Notebook notebook : notebookList) {
+            if (notebook.getBrandName().equals(selectedBrand) ) {
+                filteredList2.add(notebook);
+            }
+        }
+
+        for (Notebook notebook : filteredList2) {
+            System.out.println(notebook);
+        }
     }
 }
 

@@ -24,6 +24,7 @@ public abstract class Product {
     }
 
     public Product() {
+
     }
 
     public int getPrice() {
